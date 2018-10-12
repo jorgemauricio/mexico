@@ -1,0 +1,30 @@
+* cargar el archivo wrfout
+'open wrfout.ctl'
+* comenzar con el ciclo de ejecución
+'run color_bar.gs'
+'set clevs 5 10 20 30 40 50 70 100 150 200 300 400 500 600 700 800 900 1000 1300 1500'
+'set ccols 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520'
+'set gxout shaded'
+'set poli off'
+'set grads off'
+'set lon -119 -85'
+'set lat 9 33'
+'RAIN = sum(apcpsfc,t=6,t=126)'
+'d RAIN'
+'set gxout shp'
+'draw shp shapes/MAPA'
+'run colorbar.gs bottom'
+'set t 6'
+'q time'
+fecha1=substr(result, 8,12)
+'set t 126'
+'q time'
+fecha2=substr(result, 8,12)
+'draw title Precipitacion Estimada Acumulada (mm)\ valido para 'fecha1' a 'fecha2
+'set string 1 c 1 0'
+'draw string 5.0 5.0 @INIFAP 2018'
+'printim rain_acum.png x1024 y1024 white'
+'set gxout print'
+'fprintf RAIN rain_acum.txt %g 253 1'
+'clear'
+'reset'
