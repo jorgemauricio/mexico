@@ -115,6 +115,7 @@ wrfout.grb2
 *.png
 *.txt
 *.csv
+*.gif
 
 # bash files
 *.sh
